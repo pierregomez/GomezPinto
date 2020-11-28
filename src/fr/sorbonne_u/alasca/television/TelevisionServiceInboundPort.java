@@ -22,10 +22,11 @@ public class TelevisionServiceInboundPort extends AbstractInboundPort implements
 		super(TelevisionServiceCI.class, owner);
 	}
 
+
 	@Override
-	public boolean getStates() throws Exception {
-		return this.getOwner().handleRequestSync(
-				c -> ((TelevisionImplementionI)c).getState());
+	public boolean getState() throws Exception {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
