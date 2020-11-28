@@ -4,5 +4,5 @@ import fr.sorbonne_u.components.interfaces.OfferedCI;
 
 public interface EnergyCounterServicesCI extends OfferedCI {
 	
-	public double getInstantConsumption();
+	public double getInstantConsumption() throws Exception;
 }

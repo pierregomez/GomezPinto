@@ -1,18 +1,17 @@
 package fr.sorbonne_u.alasca.energyCounter;
 
 import fr.sorbonne_u.alasca.URIs;
-import fr.sorbonne_u.alasca.fridge.FridgeServiceInboundPort;
 import fr.sorbonne_u.components.AbstractComponent;
 
 public class EnergyCounter extends AbstractComponent implements EnergyCounterServicesCI {
 
-	protected EnergyCounterInboundPort ecsip;
+	protected EnergyCounterServiceInboundPort ecsip;
 	
 	private double instantConsumption;
 	
 	protected EnergyCounter(String uri) throws Exception {
 		super(uri,1,0);
-		this.ecsip = new EnergyCounterInboundPort(URIs.FRIDGE_INBOUND_PORT_URI, this);
+		this.ecsip = new EnergyCounterServiceInboundPort(URIs.ENERGY_COUNTER_INBOUND_PORT_URI, this);
 		this.ecsip.publishPort();
 
 		this.instantConsumption = 0;
