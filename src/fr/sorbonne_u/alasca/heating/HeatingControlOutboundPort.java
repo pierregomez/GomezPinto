@@ -3,14 +3,14 @@ package fr.sorbonne_u.alasca.heating;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
 
-public class HeatingOutboundPort extends AbstractOutboundPort implements HeatingControlCI {
+public class HeatingControlOutboundPort extends AbstractOutboundPort implements HeatingControlCI {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public HeatingOutboundPort(String uri, ComponentI owner)
+	public HeatingControlOutboundPort(String uri, ComponentI owner)
 			throws Exception {
 		super(uri,HeatingControlCI.class, owner);
 	}

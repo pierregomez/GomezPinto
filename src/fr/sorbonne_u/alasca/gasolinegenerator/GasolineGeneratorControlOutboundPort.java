@@ -3,14 +3,14 @@ package fr.sorbonne_u.alasca.gasolinegenerator;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
 
-public class GasolineGeneratorOutboundPort extends AbstractOutboundPort implements GasolineGeneratorControlCI {
+public class GasolineGeneratorControlOutboundPort extends AbstractOutboundPort implements GasolineGeneratorControlCI {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public GasolineGeneratorOutboundPort(String uri, ComponentI owner)
+	public GasolineGeneratorControlOutboundPort(String uri, ComponentI owner)
 			throws Exception {
 		super(uri, GasolineGeneratorControlCI.class, owner);
 	}
