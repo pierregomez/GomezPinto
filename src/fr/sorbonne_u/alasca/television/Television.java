@@ -5,7 +5,7 @@ import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
 @OfferedInterfaces(offered = {TelevisionServiceCI.class})
-public class Television extends AbstractComponent implements TelevisionImplementionI{
+public class Television extends AbstractComponent implements TelevisionServiceCI{
 
 	public static final String CSIP_URI = "Television_CSIP_URI";
 	protected TelevisionServiceInboundPort csip;
@@ -41,6 +41,7 @@ public class Television extends AbstractComponent implements TelevisionImplement
 		}
 		super.shutdown();
 	}
+
 
 
 }
