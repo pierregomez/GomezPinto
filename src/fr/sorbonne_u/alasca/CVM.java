@@ -1,6 +1,6 @@
 package fr.sorbonne_u.alasca;
 
-import fr.sorbonne_u.alasca.Controler.HomeControler;
+import fr.sorbonne_u.alasca.controller.HomeController;
 import fr.sorbonne_u.alasca.fridge.Fridge;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.AbstractComponentHelper;
@@ -21,7 +21,7 @@ public class CVM extends AbstractCVM {
 				new Object[] {
 						"fridge-uri"
 		});
-		AbstractComponent.createComponent(HomeControler.class.getCanonicalName(),
+		AbstractComponent.createComponent(HomeController.class.getCanonicalName(),
 				new Object[] {
 						"controler-uri",
 						"port-fridge-controller-out-uri",

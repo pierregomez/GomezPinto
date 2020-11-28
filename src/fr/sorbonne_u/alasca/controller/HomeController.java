@@ -1,4 +1,4 @@
-package fr.sorbonne_u.alasca.Controler;
+package fr.sorbonne_u.alasca.controller;
 
 import fr.sorbonne_u.alasca.fridge.FridgeConnector;
 import fr.sorbonne_u.alasca.fridge.FridgeControlCI;
@@ -9,19 +9,20 @@ import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 import fr.sorbonne_u.components.exceptions.ComponentStartException;
 
 @RequiredInterfaces(required = {FridgeControlCI.class})
-public class HomeControler extends AbstractComponent implements HomeControlerInterface {
+public class HomeController extends AbstractComponent{
+	
 	private  FridgeControlOutboundPort fridgeOutboundPort;
 	private String fridgeInboundPortURI;
 
-	protected HomeControler(
+	protected HomeController(
 			String reflectionInboundPortURI,
-			String fridgeOutboundPortURI,
+			String fridgeControlOutboundPortURI,
             String fridgeInboundPortURI
 			) throws Exception {
 		super(reflectionInboundPortURI, 1, 0);
 		this.fridgeInboundPortURI = fridgeInboundPortURI;
 		
-		this.fridgeOutboundPort = new FridgeControlOutboundPort(fridgeOutboundPortURI,this);
+		this.fridgeOutboundPort = new FridgeControlOutboundPort(fridgeControlOutboundPortURI,this);
         this.fridgeOutboundPort.publishPort();
 	}
 	
