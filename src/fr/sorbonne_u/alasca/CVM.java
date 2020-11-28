@@ -3,7 +3,6 @@ package fr.sorbonne_u.alasca;
 import fr.sorbonne_u.alasca.controller.HomeController;
 import fr.sorbonne_u.alasca.fridge.Fridge;
 import fr.sorbonne_u.components.AbstractComponent;
-import fr.sorbonne_u.components.AbstractComponentHelper;
 import fr.sorbonne_u.components.cvm.AbstractCVM;
 
 public class CVM extends AbstractCVM {
@@ -19,13 +18,13 @@ public class CVM extends AbstractCVM {
 		
 		AbstractComponent.createComponent(Fridge.class.getCanonicalName(),
 				new Object[] {
-						"fridge-uri"
+						URIs.FRIDGE_URI
 		});
 		AbstractComponent.createComponent(HomeController.class.getCanonicalName(),
 				new Object[] {
-						"controler-uri",
-						"port-fridge-controller-out-uri",
-						"port-fridge-in-uri"
+						URIs.CONTROLLER_URI,
+						URIs.FRIDGE_CONTROLLER_OUTBOUND_PORT_URI,
+						URIs.FRIDGE_INBOUND_PORT_URI
 				});
 		
 		super.deploy();
