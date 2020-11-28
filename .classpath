@@ -6,9 +6,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/pierr/Desktop/alascaa/alasca_jars/BCM4Java-01102020.jar"/>
-	<classpathentry kind="lib" path="C:/Users/pierr/Desktop/alascaa/alasca_jars/commons-math3-3.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/pierr/Desktop/alascaa/alasca_jars/javassist.jar"/>
-	<classpathentry kind="lib" path="C:/Users/pierr/Desktop/alascaa/alasca_jars/jing.jar"/>
+	<classpathentry kind="lib" path="/home/bruno/Téléchargements/BCM4Java-01102020.jar(1)/BCM4Java-01102020.jar"/>
+	<classpathentry kind="lib" path="/home/bruno/Téléchargements/commons-math3-3.5.jar/commons-math3-3.5.jar"/>
+	<classpathentry kind="lib" path="/home/bruno/Téléchargements/javassist.jar(1)/javassist.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

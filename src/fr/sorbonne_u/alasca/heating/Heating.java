@@ -5,7 +5,7 @@ import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
 @OfferedInterfaces(offered = {HeatingServiceCI.class})
-public class Heating extends AbstractComponent implements HeatingImplementationI{
+public class Heating extends AbstractComponent implements HeatingControlCI{
 	public static final String CSIP_URI = "Heating_CSIP_URI";
 	protected HeatingServiceInboundPort csip;
 	
