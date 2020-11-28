@@ -1,20 +1,21 @@
 package fr.sorbonne_u.alasca.fridge;
 
+import fr.sorbonne_u.alasca.URIs;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
 @OfferedInterfaces(offered = {FridgeServiceCI.class})
 public class Fridge  extends AbstractComponent{
-	public static final String CSIP_URI = "port-fridge-in-uri";
-	protected FridgeServiceInboundPort csip;
+	
+	protected FridgeServiceInboundPort fsip;
 	
 	private boolean isOn;
 	
 	protected Fridge(String uri) throws Exception {
 		super(uri,1,0);
-		this.csip = new FridgeServiceInboundPort(CSIP_URI, this);
-		this.csip.publishPort();
+		this.fsip = new FridgeServiceInboundPort(URIs.FRIDGE_INBOUND_PORT_URI, this);
+		this.fsip.publishPort();
 		
 		this.isOn = false;
 
@@ -40,7 +41,7 @@ public class Fridge  extends AbstractComponent{
 	@Override
 	public synchronized void shutdown() throws ComponentShutdownException {
 		try {
-			this.csip.unpublishPort();
+			this.fsip.unpublishPort();
 		} catch (Exception e) {
 			throw new ComponentShutdownException(e);
 		}

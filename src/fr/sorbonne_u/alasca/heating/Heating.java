@@ -1,27 +1,26 @@
 package fr.sorbonne_u.alasca.heating;
 
+import fr.sorbonne_u.alasca.URIs;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
 @OfferedInterfaces(offered = {HeatingServiceCI.class})
 public class Heating extends AbstractComponent implements HeatingServiceCI{
-	public static final String CSIP_URI = "Heating_CSIP_URI";
-	protected HeatingServiceInboundPort csip;
+	protected HeatingServiceInboundPort hsip;
 	
-	// faire la gestion du temps
 	
 	protected Heating() throws Exception {
 		super(1,0);
-		this.csip = new HeatingServiceInboundPort(CSIP_URI, this);
-		this.csip.publishPort();
+		this.hsip = new HeatingServiceInboundPort(URIs.HEATING_INBOUND_PORT_URI, this);
+		this.hsip.publishPort();
 		
 	}
 
 	@Override
 	public synchronized void shutdown() throws ComponentShutdownException {
 		try {
-			this.csip.unpublishPort();
+			this.hsip.unpublishPort();
 		} catch (Exception e) {
 			throw new ComponentShutdownException(e);
 		}
