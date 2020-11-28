@@ -5,7 +5,7 @@ import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
 @OfferedInterfaces(offered = {GasolineGeneratorServiceCI.class})
-public class GasolineGenerator  extends AbstractComponent {
+public class GasolineGenerator  extends AbstractComponent implements GasolineGeneratorServiceCI{
 	private final double max;	
 	private double current;
 	
@@ -47,4 +47,5 @@ public class GasolineGenerator  extends AbstractComponent {
 		}
 		super.shutdown();
 	}
+
 }

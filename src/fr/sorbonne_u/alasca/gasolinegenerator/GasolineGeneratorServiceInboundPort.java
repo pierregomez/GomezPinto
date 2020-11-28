@@ -28,7 +28,7 @@ public class GasolineGeneratorServiceInboundPort extends AbstractInboundPort imp
 	}
 
 	@Override
-	public double currentState() throws Exception {
+	public double getCurrentState() throws Exception {
 		return this.getOwner().handleRequestSync(
 				c -> ((GasolineGenerator)c).getCurrentState());
 	}
