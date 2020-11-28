@@ -1,6 +1,7 @@
 package fr.sorbonne_u.alasca.gasolinegenerator;
 
 
+import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractInboundPort;
 
@@ -22,21 +23,68 @@ public class GasolineGeneratorServiceInboundPort extends AbstractInboundPort imp
 	}
 
 	@Override
-	public double getMax() throws Exception{
+	public double getCapacity() throws Exception {
 		return this.getOwner().handleRequestSync(
-				c -> ((GasolineGenerator)c).getMax());
+				c -> ((GasolineGenerator)c).getCapacity());
 	}
 
 	@Override
-	public double getCurrentState() throws Exception {
+	public double getPowerLeft() throws Exception {
 		return this.getOwner().handleRequestSync(
-				c -> ((GasolineGenerator)c).getCurrentState());
+				c -> ((GasolineGenerator)c).getPowerLeft());
 	}
 
 	@Override
-	public double fill(double liter) throws Exception {
+	public boolean isOn() throws Exception {
 		return this.getOwner().handleRequestSync(
-				c -> ((GasolineGenerator)c).fill(liter));
+				c -> ((GasolineGenerator)c).isOn());
 	}
+
+	@Override
+	public double getPowerOutput() throws Exception {
+		return this.getOwner().handleRequestSync(
+				c -> ((GasolineGenerator)c).getPowerOutput());
+	}
+
+	@Override
+	public void setHigh() throws Exception {
+		this.getOwner().handleRequestSync(
+				new AbstractComponent.AbstractService<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        ((GasolineGenerator)this.getServiceOwner()).setHigh();
+                        return null;
+                    }
+                }) ;
+		
+	}
+
+	@Override
+	public void setLow() throws Exception {
+		this.getOwner().handleRequestSync(
+				new AbstractComponent.AbstractService<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        ((GasolineGenerator)this.getServiceOwner()).setLow();
+                        return null;
+                    }
+                }) ;
+		
+	}
+
+	@Override
+	public void consumeGas() throws Exception {
+		this.getOwner().handleRequestSync(
+				new AbstractComponent.AbstractService<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        ((GasolineGenerator)this.getServiceOwner()).consumeGas();
+                        return null;
+                    }
+                }) ;
+		
+	}
+
+	
 
 }
