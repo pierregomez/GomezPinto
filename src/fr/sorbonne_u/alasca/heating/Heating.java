@@ -6,26 +6,22 @@ import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
 @OfferedInterfaces(offered = {HeatingServiceCI.class})
-public class Heating extends AbstractComponent implements HeatingServiceCI{
+public class Heating extends AbstractComponent implements HeatingInterface{
 	protected HeatingServiceInboundPort hsip;
 	
+	private double homeTemp;
+	public boolean isOn;
 	
-	protected Heating() throws Exception {
-		super(1,0);
+	
+	
+	protected Heating(String uri) throws Exception {
+		super(uri,1,0);
 		this.hsip = new HeatingServiceInboundPort(URIs.HEATING_INBOUND_PORT_URI, this);
 		this.hsip.publishPort();
 		
+		this.homeTemp = 20.0;
 	}
 
-	@Override
-	public synchronized void shutdown() throws ComponentShutdownException {
-		try {
-			this.hsip.unpublishPort();
-		} catch (Exception e) {
-			throw new ComponentShutdownException(e);
-		}
-		super.shutdown();
-	}
 	
 	public void scheduleOn() {
 		// TODO
@@ -36,7 +32,7 @@ public class Heating extends AbstractComponent implements HeatingServiceCI{
 	}
 	
 	public boolean getState() {
-		return false; // TODO
+		return isOn;
 	}
 
 	@Override
@@ -67,5 +63,34 @@ public class Heating extends AbstractComponent implements HeatingServiceCI{
 	public void setTimeBand2(int deb, int fin) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public synchronized void shutdown() throws ComponentShutdownException {
+		try {
+			this.hsip.unpublishPort();
+		} catch (Exception e) {
+			throw new ComponentShutdownException(e);
+		}
+		super.shutdown();
+	}
+
+
+	@Override
+	public void switchOn() throws Exception {
+		this.isOn = true;
+		
+	}
+
+
+	@Override
+	public void switchOff() throws Exception {
+		this.isOn = false;
+		
+	}
+
+
+	@Override
+	public double getHomeTemp() throws Exception {
+		return this.homeTemp;
 	}
 }

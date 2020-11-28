@@ -1,6 +1,7 @@
 package fr.sorbonne_u.alasca.gasolinegenerator;
 
 
+import fr.sorbonne_u.alasca.gasolinegenerator.GasolineGenerator.Mode;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractInboundPort;
@@ -83,6 +84,38 @@ public class GasolineGeneratorServiceInboundPort extends AbstractInboundPort imp
                     }
                 }) ;
 		
+	}
+
+	@Override
+	public void switchOff() throws Exception {
+		this.getOwner().handleRequestSync(
+				new AbstractComponent.AbstractService<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        ((GasolineGenerator)this.getServiceOwner()).switchOff();
+                        return null;
+                    }
+                }) ;
+		
+	}
+
+	@Override
+	public void switchOn() throws Exception {
+		this.getOwner().handleRequestSync(
+				new AbstractComponent.AbstractService<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        ((GasolineGenerator)this.getServiceOwner()).switchOn();
+                        return null;
+                    }
+                }) ;
+		
+	}
+
+	@Override
+	public Mode getMode() throws Exception {
+		return this.getOwner().handleRequestSync(
+				c -> ((GasolineGenerator)c).getMode());
 	}
 
 	

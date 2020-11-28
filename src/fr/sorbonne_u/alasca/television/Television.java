@@ -1,20 +1,20 @@
 package fr.sorbonne_u.alasca.television;
 
+import fr.sorbonne_u.alasca.URIs;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
 @OfferedInterfaces(offered = {TelevisionServiceCI.class})
-public class Television extends AbstractComponent implements TelevisionServiceCI{
+public class Television extends AbstractComponent implements TelevisionInterface{
 
-	public static final String CSIP_URI = "Television_CSIP_URI";
-	protected TelevisionServiceInboundPort csip;
+	protected TelevisionServiceInboundPort tsip;
 	private boolean isOn;
 	
-	protected Television(double max) throws Exception {
-		super(1,0);
-		this.csip = new TelevisionServiceInboundPort(CSIP_URI, this);
-		this.csip.publishPort();
+	protected Television(String uri) throws Exception {
+		super(uri,1,0);
+		this.tsip = new TelevisionServiceInboundPort(URIs.TV_INBOUND_PORT_URI, this);
+		this.tsip.publishPort();
 		isOn = false;
 		
 	}
@@ -35,7 +35,7 @@ public class Television extends AbstractComponent implements TelevisionServiceCI
 	@Override
 	public synchronized void shutdown() throws ComponentShutdownException {
 		try {
-			this.csip.unpublishPort();
+			this.tsip.unpublishPort();
 		} catch (Exception e) {
 			throw new ComponentShutdownException(e);
 		}

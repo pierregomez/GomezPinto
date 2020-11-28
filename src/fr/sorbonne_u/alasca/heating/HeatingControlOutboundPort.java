@@ -54,4 +54,21 @@ public class HeatingControlOutboundPort extends AbstractOutboundPort implements 
 		((HeatingControlCI)this.getConnector()).setTimeBand2(deb, fin);		
 	}
 
+	@Override
+	public void switchOn() throws Exception {
+		((HeatingControlCI)this.getConnector()).switchOn();
+		
+	}
+
+	@Override
+	public void switchOff() throws Exception {
+		((HeatingControlCI)this.getConnector()).switchOff();
+		
+	}
+
+	@Override
+	public double getHomeTemp() throws Exception {
+		return ((HeatingControlCI)this.getConnector()).getHomeTemp();
+	}
+
 }

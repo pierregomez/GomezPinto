@@ -1,7 +1,13 @@
 package fr.sorbonne_u.alasca;
 
+import fr.sorbonne_u.alasca.battery.Battery;
 import fr.sorbonne_u.alasca.controller.HomeController;
+import fr.sorbonne_u.alasca.energyCounter.EnergyCounter;
 import fr.sorbonne_u.alasca.fridge.Fridge;
+import fr.sorbonne_u.alasca.gasolinegenerator.GasolineGenerator;
+import fr.sorbonne_u.alasca.heating.Heating;
+import fr.sorbonne_u.alasca.television.Television;
+import fr.sorbonne_u.alasca.windTurbine.WindTurbine;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.cvm.AbstractCVM;
 
@@ -18,14 +24,41 @@ public class CVM extends AbstractCVM {
 		
 		AbstractComponent.createComponent(Fridge.class.getCanonicalName(),
 				new Object[] {
-						URIs.FRIDGE_URI,
+						URIs.FRIDGE_URI
+		});
+		
+		AbstractComponent.createComponent(Battery.class.getCanonicalName(),
+				new Object[] {
 						URIs.BATTERY_URI,
-						URIs.ENERGY_COUNTER_URI,
+						5000.0
+		});
+		
+		AbstractComponent.createComponent(EnergyCounter.class.getCanonicalName(),
+				new Object[] {
+						URIs.ENERGY_COUNTER_URI
+		});
+		
+		AbstractComponent.createComponent(GasolineGenerator.class.getCanonicalName(),
+				new Object[] {
 						URIs.GENERATOR_URI,
-						URIs.HEATING_URI,
-						URIs.TV_URI,
+						5000.0
+		});
+		
+		AbstractComponent.createComponent(Heating.class.getCanonicalName(),
+				new Object[] {
+						URIs.HEATING_URI
+		});
+		
+		AbstractComponent.createComponent(Television.class.getCanonicalName(),
+				new Object[] {
+						URIs.TV_URI
+		});
+		
+		AbstractComponent.createComponent(WindTurbine.class.getCanonicalName(),
+				new Object[] {
 						URIs.WINDTURBINE_URI
 		});
+		
 		AbstractComponent.createComponent(HomeController.class.getCanonicalName(),
 				new Object[] {
 						URIs.CONTROLLER_URI,

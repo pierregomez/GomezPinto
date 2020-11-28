@@ -6,12 +6,12 @@ public class BatteryConnector extends AbstractConnector implements BatteryContro
 
 	@Override
 	public double getMax() throws Exception {
-		return ((BatteryControlCI)this.offering).getMax();
+		return ((BatteryServiceCI)this.offering).getMax();
 	}
 
 	@Override
 	public double getCurrentState() throws Exception {
-		return ((BatteryControlCI)this.offering).getMax();
+		return ((BatteryServiceCI)this.offering).getMax();
 	}
 
 }

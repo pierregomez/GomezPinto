@@ -106,7 +106,39 @@ public class HeatingServiceInboundPort extends AbstractInboundPort implements He
                         ((Heating)this.getServiceOwner()).setTimeBand2(deb, fin);
                         return null;
                     }
-                }) ;			
+                });
+	}
+
+	@Override
+	public void switchOn() throws Exception {
+		this.getOwner().handleRequestSync(
+				new AbstractComponent.AbstractService<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        ((Heating)this.getServiceOwner()).switchOn();
+                        return null;
+                    }
+                }) ;
+		
+	}
+
+	@Override
+	public void switchOff() throws Exception {
+		this.getOwner().handleRequestSync(
+				new AbstractComponent.AbstractService<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        ((Heating)this.getServiceOwner()).switchOff();
+                        return null;
+                    }
+                }) ;
+		
+	}
+
+	@Override
+	public double getHomeTemp() throws Exception {
+		return this.getOwner().handleRequestSync(
+				c -> ((Heating)c).getHomeTemp());
 	}
 
 

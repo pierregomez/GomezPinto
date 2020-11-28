@@ -1,9 +1,8 @@
 package fr.sorbonne_u.alasca.gasolinegenerator;
 
 import fr.sorbonne_u.alasca.gasolinegenerator.GasolineGenerator.Mode;
-import fr.sorbonne_u.components.interfaces.OfferedCI;
 
-public interface GasolineGeneratorServiceCI extends OfferedCI {
+public interface GasolineGeneratorInterface{
 	
 	public double getCapacity() throws Exception;
 	

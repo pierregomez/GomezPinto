@@ -4,13 +4,19 @@ import fr.sorbonne_u.components.interfaces.RequiredCI;
 
 public interface HeatingControlCI extends RequiredCI{
 	
-	public boolean getState() throws Exception;
+public boolean getState() throws Exception;
+	
+	public void switchOn() throws Exception;
+	
+	public void switchOff() throws Exception;
 	
 	public void scheduleOn() throws Exception; 
 	
 	public void scheduleOff() throws Exception;
 	
 	public void resume() throws Exception;
+	
+	public double getHomeTemp() throws Exception;
 	
 	public void setTemp1(double temp) throws Exception;
 	

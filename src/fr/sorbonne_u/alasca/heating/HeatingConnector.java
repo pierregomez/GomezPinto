@@ -6,49 +6,66 @@ public class HeatingConnector extends AbstractConnector implements HeatingContro
 
 	@Override
 	public boolean getState() throws Exception {
-		return ((HeatingControlCI)this.offering).getState();
+		return ((HeatingServiceCI)this.offering).getState();
 	}
 
 	@Override
 	public void scheduleOn() throws Exception {
-		((HeatingControlCI)this.offering).scheduleOn();
+		((HeatingServiceCI)this.offering).scheduleOn();
 
 	}
 
 	@Override
 	public void scheduleOff() throws Exception {
-		((HeatingControlCI)this.offering).scheduleOff();
+		((HeatingServiceCI)this.offering).scheduleOff();
 
 	}
 
 	@Override
 	public void resume() throws Exception {
-		((HeatingControlCI)this.offering).resume();
+		((HeatingServiceCI)this.offering).resume();
 
 	}
 
 	@Override
 	public void setTemp1(double temp) throws Exception {
-		((HeatingControlCI)this.offering).setTemp1(temp);
+		((HeatingServiceCI)this.offering).setTemp1(temp);
 
 	}
 
 	@Override
 	public void setTemp2(double temp) throws Exception {
-		((HeatingControlCI)this.offering).setTemp2(temp);
+		((HeatingServiceCI)this.offering).setTemp2(temp);
 
 	}
 
 	@Override
 	public void setTimeBand1(int deb, int fin) throws Exception {
-		((HeatingControlCI)this.offering).setTimeBand1(deb, fin);
+		((HeatingServiceCI)this.offering).setTimeBand1(deb, fin);
 
 	}
 
 	@Override
 	public void setTimeBand2(int deb, int fin) throws Exception {
-		((HeatingControlCI)this.offering).setTimeBand2(deb, fin);
+		((HeatingServiceCI)this.offering).setTimeBand2(deb, fin);
 
+	}
+
+	@Override
+	public void switchOn() throws Exception {
+		((HeatingServiceCI)this.offering).switchOn();
+		
+	}
+
+	@Override
+	public void switchOff() throws Exception {
+		((HeatingServiceCI)this.offering).switchOff();
+		
+	}
+
+	@Override
+	public double getHomeTemp() throws Exception {
+		return ((HeatingServiceCI)this.offering).getHomeTemp();
 	}
 
 }

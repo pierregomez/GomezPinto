@@ -5,8 +5,8 @@ import fr.sorbonne_u.components.connectors.AbstractConnector;
 public class TelevisonConnector extends AbstractConnector implements TelevisionControlCI {
 
 	@Override
-	public boolean getState() {
-		return ((TelevisonConnector)this.offering).getState();
+	public boolean getState() throws Exception {
+		return ((TelevisionServiceCI)this.offering).getState();
 	}
 
 }

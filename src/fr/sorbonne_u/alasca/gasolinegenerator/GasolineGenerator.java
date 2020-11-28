@@ -1,11 +1,12 @@
 package fr.sorbonne_u.alasca.gasolinegenerator;
 
+import fr.sorbonne_u.alasca.URIs;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
 @OfferedInterfaces(offered = {GasolineGeneratorServiceCI.class})
-public class GasolineGenerator  extends AbstractComponent implements GasolineGeneratorServiceCI{
+public class GasolineGenerator  extends AbstractComponent implements GasolineGeneratorInterface{
 	private final double capacity_Wh;
 	private double powerLeft_Wh;
 	private double powerOutput_W;
@@ -13,13 +14,12 @@ public class GasolineGenerator  extends AbstractComponent implements GasolineGen
 	public enum Mode {LOW,HIGH};
 	private Mode mode;
 	
-	public static final String CSIP_URI = "GasolineGenerator_CSIP_URI";
-	protected GasolineGeneratorServiceInboundPort csip;
+	protected GasolineGeneratorServiceInboundPort gsip;
 	
-	protected GasolineGenerator(double capacity_Wh) throws Exception {
-		super(1,0);
-		this.csip = new GasolineGeneratorServiceInboundPort(CSIP_URI, this);
-		this.csip.publishPort();
+	protected GasolineGenerator(String uri, double capacity_Wh) throws Exception {
+		super(uri,1,0);
+		this.gsip = new GasolineGeneratorServiceInboundPort(URIs.GENERATOR_INBOUND_PORT_URI, this);
+		this.gsip.publishPort();
 		
 		this.capacity_Wh = capacity_Wh;
 		this.powerLeft_Wh = capacity_Wh;
@@ -71,14 +71,31 @@ public class GasolineGenerator  extends AbstractComponent implements GasolineGen
 	}
 
 	@Override
+	public Mode getMode() throws Exception {
+		return this.mode;
+		
+	}
+	@Override
+	public void switchOff() throws Exception {
+		this.isOn = false;
+	}
+	
+	@Override
+	public void switchOn() throws Exception {
+		this.isOn = true;
+	}
+	
+	@Override
 	public synchronized void shutdown() throws ComponentShutdownException {
 		try {
-			this.csip.unpublishPort();
+			this.gsip.unpublishPort();
 		} catch (Exception e) {
 			throw new ComponentShutdownException(e);
 		}
 		super.shutdown();
 	}
+
+
 
 
 

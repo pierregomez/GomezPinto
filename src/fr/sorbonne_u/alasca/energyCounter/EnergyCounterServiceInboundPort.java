@@ -10,9 +10,14 @@ public class EnergyCounterServiceInboundPort extends AbstractInboundPort impleme
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EnergyCounterServiceInboundPort(String uri, ComponentI owner) throws Exception {
+	public EnergyCounterServiceInboundPort(ComponentI owner)
+			throws Exception {
+		super(EnergyCounterServicesCI.class, owner);
+	}
+
+	public EnergyCounterServiceInboundPort(String uri, ComponentI owner)
+			throws Exception {
 		super(uri, EnergyCounterServicesCI.class, owner);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

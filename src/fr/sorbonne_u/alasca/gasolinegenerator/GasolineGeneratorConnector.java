@@ -1,24 +1,64 @@
 package fr.sorbonne_u.alasca.gasolinegenerator;
 
+import fr.sorbonne_u.alasca.gasolinegenerator.GasolineGenerator.Mode;
 import fr.sorbonne_u.components.connectors.AbstractConnector;
 
 public class GasolineGeneratorConnector extends AbstractConnector implements GasolineGeneratorControlCI {
 
 	@Override
-	public double getMax() throws Exception {
-		return ((GasolineGeneratorControlCI)this.offering).getMax();
+	public double getCapacity() throws Exception {
+		return ((GasolineGeneratorServiceCI)this.offering).getCapacity();
 	}
 
 	@Override
-	public double getCurrentState() throws Exception {
-		return ((GasolineGeneratorControlCI)this.offering).getCurrentState();
-
+	public double getPowerLeft() throws Exception {
+		return ((GasolineGeneratorServiceCI)this.offering).getPowerLeft();
 	}
 
 	@Override
-	public double fill(double liter) throws Exception {
-		return ((GasolineGeneratorControlCI)this.offering).fill(liter);
-
+	public boolean isOn() throws Exception {
+		return ((GasolineGeneratorServiceCI)this.offering).isOn();
 	}
+
+	@Override
+	public double getPowerOutput() throws Exception {
+		return ((GasolineGeneratorServiceCI)this.offering).getPowerOutput();
+	}
+
+	@Override
+	public void switchOff() throws Exception {
+		((GasolineGeneratorServiceCI)this.offering).switchOff();
+	}
+
+	@Override
+	public void switchOn() throws Exception {
+		((GasolineGeneratorServiceCI)this.offering).switchOn();
+		
+	}
+
+	@Override
+	public void setHigh() throws Exception {
+		((GasolineGeneratorServiceCI)this.offering).setHigh();
+		
+	}
+
+	@Override
+	public void setLow() throws Exception {
+		((GasolineGeneratorServiceCI)this.offering).setLow();
+		
+	}
+
+	@Override
+	public Mode getMode() throws Exception {
+		return ((GasolineGeneratorServiceCI)this.offering).getMode();
+	}
+
+	@Override
+	public void consumeGas() throws Exception {
+		((GasolineGeneratorServiceCI)this.offering).consumeGas();
+		
+	}
+
+
 
 }

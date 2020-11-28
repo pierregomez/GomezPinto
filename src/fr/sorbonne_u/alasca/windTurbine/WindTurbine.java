@@ -2,14 +2,17 @@ package fr.sorbonne_u.alasca.windTurbine;
 
 import fr.sorbonne_u.alasca.URIs;
 import fr.sorbonne_u.components.AbstractComponent;
+import fr.sorbonne_u.components.annotations.OfferedInterfaces;
+import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
-public class WindTurbine extends AbstractComponent implements WindTurbineServiceCI {
+@OfferedInterfaces(offered = {WindTurbineServiceCI.class})
+public class WindTurbine extends AbstractComponent implements WindTurbineInterface {
 	
 	protected WindTurbineServiceInboundPort wsip;
 	
 	private boolean isOn;
 	private double windSpeed;
-	private double power;
+	private double powerOutput_W;
 	
 
 	protected WindTurbine(String uri) throws Exception {
@@ -19,7 +22,7 @@ public class WindTurbine extends AbstractComponent implements WindTurbineService
 		
 		this.isOn = false;
 		this.windSpeed = 0;
-		this.power = 0;
+		this.powerOutput_W = 0;
 
 	}
 
@@ -47,8 +50,16 @@ public class WindTurbine extends AbstractComponent implements WindTurbineService
 
 	@Override
 	public double getPower() {
-		return this.power;
+		return this.powerOutput_W;
 	}
 
-
+	@Override
+	public synchronized void shutdown() throws ComponentShutdownException {
+		try {
+			this.wsip.unpublishPort();
+		} catch (Exception e) {
+			throw new ComponentShutdownException(e);
+		}
+		super.shutdown();
+	}
 }

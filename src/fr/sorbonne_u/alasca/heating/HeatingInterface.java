@@ -1,9 +1,9 @@
 package fr.sorbonne_u.alasca.heating;
 
-import fr.sorbonne_u.components.interfaces.OfferedCI;
 
-public interface HeatingServiceCI extends OfferedCI {
-public boolean getState() throws Exception;
+public interface HeatingInterface {
+	
+	public boolean getState() throws Exception;
 	
 	public void switchOn() throws Exception;
 	

@@ -2,8 +2,11 @@ package fr.sorbonne_u.alasca.energyCounter;
 
 import fr.sorbonne_u.alasca.URIs;
 import fr.sorbonne_u.components.AbstractComponent;
+import fr.sorbonne_u.components.annotations.OfferedInterfaces;
+import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
-public class EnergyCounter extends AbstractComponent implements EnergyCounterServicesCI {
+@OfferedInterfaces(offered = {EnergyCounterServicesCI.class})
+public class EnergyCounter extends AbstractComponent implements EnergyCounterInterface {
 
 	protected EnergyCounterServiceInboundPort ecsip;
 	
@@ -20,5 +23,15 @@ public class EnergyCounter extends AbstractComponent implements EnergyCounterSer
 	@Override
 	public double getInstantConsumption() {
 		return this.instantConsumption;
+	}
+	
+	@Override
+	public synchronized void shutdown() throws ComponentShutdownException {
+		try {
+			this.ecsip.unpublishPort();
+		} catch (Exception e) {
+			throw new ComponentShutdownException(e);
+		}
+		super.shutdown();
 	}
 }

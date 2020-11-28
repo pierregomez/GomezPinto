@@ -6,7 +6,7 @@ import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
 @OfferedInterfaces(offered = {FridgeServiceCI.class})
-public class Fridge  extends AbstractComponent{
+public class Fridge  extends AbstractComponent implements FridgeInterface{
 	
 	protected FridgeServiceInboundPort fsip;
 	
