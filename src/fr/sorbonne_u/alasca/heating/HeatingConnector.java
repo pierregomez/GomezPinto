@@ -6,48 +6,48 @@ public class HeatingConnector extends AbstractConnector implements HeatingContro
 
 	@Override
 	public boolean getState() throws Exception {
-		return ((HeatingConnector)this.offering).getState();
+		return ((HeatingControlCI)this.offering).getState();
 	}
 
 	@Override
 	public void scheduleOn() throws Exception {
-		((HeatingConnector)this.offering).scheduleOn();
+		((HeatingControlCI)this.offering).scheduleOn();
 
 	}
 
 	@Override
 	public void scheduleOff() throws Exception {
-		((HeatingConnector)this.offering).scheduleOff();
+		((HeatingControlCI)this.offering).scheduleOff();
 
 	}
 
 	@Override
 	public void resume() throws Exception {
-		((HeatingConnector)this.offering).resume();
+		((HeatingControlCI)this.offering).resume();
 
 	}
 
 	@Override
 	public void setTemp1(double temp) throws Exception {
-		((HeatingConnector)this.offering).setTemp1(temp);
+		((HeatingControlCI)this.offering).setTemp1(temp);
 
 	}
 
 	@Override
 	public void setTemp2(double temp) throws Exception {
-		((HeatingConnector)this.offering).setTemp2(temp);
+		((HeatingControlCI)this.offering).setTemp2(temp);
 
 	}
 
 	@Override
 	public void setTimeBand1(int deb, int fin) throws Exception {
-		((HeatingConnector)this.offering).setTimeBand1(deb, fin);
+		((HeatingControlCI)this.offering).setTimeBand1(deb, fin);
 
 	}
 
 	@Override
 	public void setTimeBand2(int deb, int fin) throws Exception {
-		((HeatingConnector)this.offering).setTimeBand2(deb, fin);
+		((HeatingControlCI)this.offering).setTimeBand2(deb, fin);
 
 	}
 
