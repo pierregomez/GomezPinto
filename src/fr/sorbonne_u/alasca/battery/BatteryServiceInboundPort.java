@@ -28,7 +28,7 @@ public class BatteryServiceInboundPort extends AbstractInboundPort implements Ba
 	}
 
 	@Override
-	public double currentState() throws Exception {
+	public double getCurrentState() throws Exception {
 		return this.getOwner().handleRequestSync(
 				c -> ((Battery)c).getCurrentState());
 	}

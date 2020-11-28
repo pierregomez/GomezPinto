@@ -4,7 +4,7 @@ import fr.sorbonne_u.components.interfaces.OfferedCI;
 
 public interface BatteryControlCI extends OfferedCI {
 	double getMax() throws Exception; // how many kw/h the battery can contains
-	double currentState() throws Exception; // how many hw/h the battery have
+	double getCurrentState() throws Exception; // how many hw/h the battery have
 	
 	// fill and drain ? (mb for RequiredCI)
 }

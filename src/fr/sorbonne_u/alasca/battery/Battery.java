@@ -5,7 +5,7 @@ import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 
 @OfferedInterfaces(offered = {BatteryServiceCI.class})
-public class Battery  extends AbstractComponent {
+public class Battery  extends AbstractComponent implements BatteryServiceCI{
 	private final double max;	
 	private double current;
 	
@@ -22,11 +22,11 @@ public class Battery  extends AbstractComponent {
 	}
 	
 	public double getMax() {
-		return max;
+		return this.max;
 	}
 
 	public double getCurrentState() {
-		return current;
+		return this.current;
 	}
 	
 	@Override
@@ -38,4 +38,5 @@ public class Battery  extends AbstractComponent {
 		}
 		super.shutdown();
 	}
+
 }
