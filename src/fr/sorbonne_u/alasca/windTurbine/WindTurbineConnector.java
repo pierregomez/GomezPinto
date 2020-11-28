@@ -1,6 +1,5 @@
 package fr.sorbonne_u.alasca.windTurbine;
 
-import fr.sorbonne_u.alasca.gasolinegenerator.GasolineGeneratorControlCI;
 import fr.sorbonne_u.components.connectors.AbstractConnector;
 
 public class WindTurbineConnector extends AbstractConnector implements WindTurbineControlCI {

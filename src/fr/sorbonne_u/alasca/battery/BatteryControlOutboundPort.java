@@ -1,7 +1,6 @@
 package fr.sorbonne_u.alasca.battery;
 
 import fr.sorbonne_u.components.ComponentI;
-import fr.sorbonne_u.components.interfaces.RequiredCI;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
 
 public class BatteryControlOutboundPort extends AbstractOutboundPort implements BatteryControlCI {
