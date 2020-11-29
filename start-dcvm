@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ -z "$1" ]; then 
+  echo usage: $0 jvmName
+  exit
+ fi
+java -ea -cp 'jars/*' -Djava.security.manager \
+     -Djava.security.policy=dcvm.policy \
+     -Djavax.accessibility.assistive_technologies=" " \
+     fr.sorbonne_u.alasca.main.DistributedCVM $1 config.xml

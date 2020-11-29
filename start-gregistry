@@ -1,0 +1,5 @@
+#!/bin/bash
+java -cp 'jars/*' -Djava.security.manager \
+     -Djava.security.policy=dcvm.policy \
+     -Djavax.accessibility.assistive_technologies=" " \
+     fr.sorbonne_u.components.registry.GlobalRegistry config.xml

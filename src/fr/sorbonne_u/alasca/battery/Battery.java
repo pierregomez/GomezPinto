@@ -1,6 +1,6 @@
 package fr.sorbonne_u.alasca.battery;
 
-import fr.sorbonne_u.alasca.URIs;
+import fr.sorbonne_u.alasca.utils.URIs;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;

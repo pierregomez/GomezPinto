@@ -1,0 +1,23 @@
+<deployment>
+   <hosts>
+    <host name="localhost"
+          dir="."/>
+  </hosts>
+  <cyclicBarrier   hostname="localhost" port="55253"/>
+  <globalRegistry  hostname="localhost" port="55252"/>
+  <rmiRegistryPort no="55999"/>
+  <jvms2hostnames>
+    <jvm2hostname jvmuri="jvmController-uri"
+        rmiRegistryCreator="true"
+        hostname="localhost"
+        mainclass="fr.sorbonne_u.alasca.main.DistributedCVM"/>
+    <jvm2hostname jvmuri="jvmEnergyCounter-uri"
+        rmiRegistryCreator="false"
+        hostname="localhost"
+        mainclass="fr.sorbonne_u.alasca.main.DistributedCVM"/>
+    <jvm2hostname jvmuri="jvmEquipments-uri"
+        rmiRegistryCreator="false"
+        hostname="localhost"
+        mainclass="fr.sorbonne_u.alasca.main.DistributedCVM"/>
+  </jvms2hostnames>
+</deployment>
