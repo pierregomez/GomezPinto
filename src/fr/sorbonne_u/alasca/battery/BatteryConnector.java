@@ -11,7 +11,7 @@ public class BatteryConnector extends AbstractConnector implements BatteryContro
 
 	@Override
 	public double getCurrentState() throws Exception {
-		return ((BatteryServiceCI)this.offering).getMax();
+		return ((BatteryServiceCI)this.offering).getCurrentState();
 	}
 
 }
