@@ -47,13 +47,39 @@ public class GasolineGeneratorServiceInboundPort extends AbstractInboundPort imp
 				c -> ((GasolineGenerator)c).getPowerOutput());
 	}
 
+//	@Override
+//	public void setHigh() throws Exception {
+//		this.getOwner().handleRequestSync(
+//				new AbstractComponent.AbstractService<Void>() {
+//                    @Override
+//                    public Void call() throws Exception {
+//                        ((GasolineGenerator)this.getServiceOwner()).setHigh();
+//                        return null;
+//                    }
+//                }) ;
+//		
+//	}
+	
 	@Override
-	public void setHigh() throws Exception {
+	public void setMode(Mode m) throws Exception {
 		this.getOwner().handleRequestSync(
 				new AbstractComponent.AbstractService<Void>() {
                     @Override
                     public Void call() throws Exception {
-                        ((GasolineGenerator)this.getServiceOwner()).setHigh();
+                        ((GasolineGenerator)this.getServiceOwner()).setMode(m);
+                        return null;
+                    }
+                }) ;
+		
+	}
+	
+	@Override
+	public void setPowerOutput_W(int w) throws Exception {
+		this.getOwner().handleRequestSync(
+				new AbstractComponent.AbstractService<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        ((GasolineGenerator)this.getServiceOwner()).setPowerOutput_W(w);
                         return null;
                     }
                 }) ;

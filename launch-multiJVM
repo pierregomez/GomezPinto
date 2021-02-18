@@ -1,0 +1,10 @@
+#!/bin/bash
+./start-gregistry &
+sleep 2
+./start-cyclicbarrier &
+sleep 2
+./start-dcvm jvmController-uri &
+sleep 2
+./start-dcvm jvmEnergyCounter-uri &
+ sleep 2
+./start-dcvm jvmEquipments-uri &

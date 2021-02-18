@@ -38,7 +38,8 @@ public class GasolineGeneratorConnector extends AbstractConnector implements Gas
 
 	@Override
 	public void setHigh() throws Exception {
-		((GasolineGeneratorServiceCI)this.offering).setHigh();
+		((GasolineGeneratorServiceCI)this.offering).setMode(Mode.HIGH);
+		((GasolineGeneratorServiceCI)this.offering).setPowerOutput_W(3000);
 		
 	}
 

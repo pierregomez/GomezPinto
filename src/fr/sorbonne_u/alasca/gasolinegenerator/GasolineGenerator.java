@@ -45,11 +45,21 @@ public class GasolineGenerator  extends AbstractComponent implements GasolineGen
 		return this.powerOutput_W;
 	}
 	
+//	@Override
+//	public void setHigh() {
+//		this.mode = Mode.HIGH;
+//		this.powerOutput_W = 3000;
+//		
+//	}
+	
 	@Override
-	public void setHigh() {
-		this.mode = Mode.HIGH;
-		this.powerOutput_W = 3000;
-		
+	public void setMode(Mode m) {
+		this.mode = m;
+	}
+	
+	@Override
+	public void setPowerOutput_W(int w) {
+		this.powerOutput_W = w;
 	}
 	
 	@Override

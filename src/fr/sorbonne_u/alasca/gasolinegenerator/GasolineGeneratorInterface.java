@@ -16,7 +16,11 @@ public interface GasolineGeneratorInterface{
 	
 	public void switchOn() throws Exception;
 	
-	public void setHigh() throws Exception;
+//	public void setHigh() throws Exception;
+	
+	public void setMode(Mode m) throws Exception;
+	
+	public void setPowerOutput_W(int w) throws Exception;
 	
 	public void setLow() throws Exception;
 	

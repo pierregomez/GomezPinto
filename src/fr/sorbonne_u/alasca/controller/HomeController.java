@@ -158,12 +158,13 @@ public class HomeController extends AbstractComponent{
 		this.generatorOutboundPort.switchOn();
 		this.generatorOutboundPort.setHigh();
 		System.out.println("Generator is On ? " + this.generatorOutboundPort.isOn() + " and selected mode is " + this.generatorOutboundPort.getMode());
+		System.out.println("Generator power output : " + this.generatorOutboundPort.getPowerOutput() + "W");
 		System.out.println("Is the fidge on ? :  " + this.fridgeOutboundPort.getCurrentState());
 		System.out.println("Turning on fridge");
         this.fridgeOutboundPort.switchOn();
         System.out.println("Is the fidge on ? :  " + this.fridgeOutboundPort.getCurrentState());
         System.out.println("Checking home temperature : ");
-        System.out.println("It's currently " + this.heatingOutboundPort.getHomeTemp()+ "°C at home");
+        System.out.println("It's currently " + this.heatingOutboundPort.getHomeTemp()+ "ï¿½C at home");
         System.out.println("Turning on heating");
         this.heatingOutboundPort.switchOn();
         System.out.println("Is heating on ? : " + this.heatingOutboundPort.getState());
